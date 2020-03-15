@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
 
@@ -38,4 +38,9 @@ export default createGlobalStyle`
     font:1rem proxima-nova,Arial,Helvetica,sans-serif;
   }
 
+`;
+
+export const ContainerGlobal = styled.div`
+  width: 1140px;
+  margin: 0 auto;
 `;
