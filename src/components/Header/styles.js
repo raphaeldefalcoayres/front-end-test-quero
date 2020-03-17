@@ -37,7 +37,7 @@ export const Head = styled.div`
         text-decoration: none;
         font-size: 18px;
         color: #007a8d;
-        font-weight: 600;
+        font-weight: 700;
         display: flex;
         align-items: center;
         padding: 5px 25px;
@@ -45,10 +45,11 @@ export const Head = styled.div`
           display: flex;
           flex-direction: column;
           align-items: start;
-          font-weight: 600;
+          font-weight: 700;
           padding-left: 5px;
           span {
             font-size: 12px;
+            margin-top: 5px;
           }
         }
         svg {
@@ -85,7 +86,7 @@ export const Nav = styled.nav`
         text-decoration: none;
         color: #fff;
         font-size: 16px;
-        font-weight: 600;
+        font-weight: 700;
         padding: 10.4px 25px;
         &.active,
         &:hover {
@@ -99,7 +100,7 @@ export const Nav = styled.nav`
 export const ProfileUser = styled.div`
   font-size: 18px;
   color: #007a8d;
-  font-weight: 600;
+  font-weight: 700;
   width: 500px;
   justify-content: flex-end;
   display: flex;

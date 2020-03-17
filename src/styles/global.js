@@ -28,10 +28,13 @@ export default createGlobalStyle`
 
   html, body, #root{
     height:100%;
+    overflow-x:hidden;
   }
 
   body{
     -webkit-font-smoothing: antialiased;
+    color:#1F2D30;
+    background:#FBFBFB;
   }
 
   body, input, button{
