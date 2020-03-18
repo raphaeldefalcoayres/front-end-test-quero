@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Container } from './styles';
 
 export default function RangeSlider({ range, action }) {
@@ -17,3 +19,8 @@ export default function RangeSlider({ range, action }) {
     </Container>
   );
 }
+
+RangeSlider.propTypes = {
+  range: PropTypes.bool.isRequired,
+  action: PropTypes.func.isRequired,
+};

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { IoIosAddCircleOutline } from 'react-icons/io';
 
 import { Container } from './styles';
@@ -17,3 +18,11 @@ export default function Scholarship({ action }) {
     </Container>
   );
 }
+
+Scholarship.propTypes = {
+  action: PropTypes.func,
+};
+
+Scholarship.defaultProps = {
+  action: null,
+};

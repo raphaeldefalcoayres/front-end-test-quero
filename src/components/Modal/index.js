@@ -3,6 +3,7 @@ import { MdClose, MdKeyboardArrowDown } from 'react-icons/md';
 import filter from 'lodash/filter';
 import omit from 'lodash/omit';
 import overEvery from 'lodash/overEvery';
+import PropTypes from 'prop-types';
 
 import {
   Container,
@@ -35,6 +36,7 @@ export default function Modal({ open, setOpen, action }) {
   const [cities, setCities] = useState([]);
   const [courses, setCourses] = useState([]);
   const [filters, setFilters] = useState([]);
+  const [disabled, setDisabled] = useState(true);
 
   async function loadScholarship() {
     if (!localStorage.getItem('scholarship')) {
@@ -148,7 +150,7 @@ export default function Modal({ open, setOpen, action }) {
   }, [filters]); // eslint-disable-line
 
   return (
-    <Container open={true}>
+    <Container open={open}>
       <Box>
         <Close onClick={() => setOpen(false)}>
           <MdClose size={16} />
@@ -160,11 +162,11 @@ export default function Modal({ open, setOpen, action }) {
           <RowForm>
             <InputGroup>
               <label htmlFor="city">SELECIONE SUA CIDADE</label>
-              <select name="" id="city" onChange={e => filterByCity(e)}>
-                <option value=""></option>
+              <select id="city" onChange={e => filterByCity(e)}>
+                <option value=""> </option>
                 {cities.length > 0 &&
-                  cities.map((city, index) => (
-                    <option key={index} value={city}>
+                  cities.map(city => (
+                    <option key={city} value={city}>
                       {city}
                     </option>
                   ))}
@@ -177,11 +179,11 @@ export default function Modal({ open, setOpen, action }) {
               <label htmlFor="course">
                 SELECIONE O CURSO DE SUA PREFERÊNCIA
               </label>
-              <select name="" id="course" onChange={e => filterByCourse(e)}>
-                <option value=""></option>
+              <select id="course" onChange={e => filterByCourse(e)}>
+                <option value=""> </option>
                 {courses.length > 0 &&
-                  courses.map((course, index) => (
-                    <option key={index} value={course}>
+                  courses.map(course => (
+                    <option key={course} value={course}>
                       {course}
                     </option>
                   ))}
@@ -193,7 +195,7 @@ export default function Modal({ open, setOpen, action }) {
           </RowForm>
           <RowForm>
             <InputGroup>
-              <label>COMO VOCÊ QUER ESTUDAR?</label>
+              <label htmlFor="kind-1">COMO VOCÊ QUER ESTUDAR?</label>
               <RowCheckbox>
                 <Checkbox>
                   <label htmlFor="kind-1">
@@ -222,7 +224,7 @@ export default function Modal({ open, setOpen, action }) {
               </RowCheckbox>
             </InputGroup>
             <InputGroup>
-              <label htmlFor="">ATÉ QUANTO PODER PAGAR?</label>
+              <label htmlFor="myRange">ATÉ QUANTO PODER PAGAR?</label>
               <RangeSlider range={range} action={filterByRange} />
             </InputGroup>
           </RowForm>
@@ -239,7 +241,7 @@ export default function Modal({ open, setOpen, action }) {
             <TableList>
               <tbody>
                 {scholarshipFilter.map((item, index) => (
-                  <tr key={index}>
+                  <tr key={item}>
                     <td>
                       <Checkbox>
                         <label htmlFor="study-type-2">
@@ -280,7 +282,7 @@ export default function Modal({ open, setOpen, action }) {
         </Body>
         <Footer>
           <ButtonDefault onClick={() => setOpen(false)}>Cancelar</ButtonDefault>
-          <ButtonAction disabled={true} onClick={() => action()}>
+          <ButtonAction disabled={disabled} onClick={() => action()}>
             Adicionar bolsa(s)
           </ButtonAction>
         </Footer>
@@ -288,3 +290,9 @@ export default function Modal({ open, setOpen, action }) {
     </Container>
   );
 }
+
+Modal.propTypes = {
+  open: PropTypes.bool.isRequired,
+  setOpen: PropTypes.bool.isRequired,
+  action: PropTypes.func.isRequired,
+};

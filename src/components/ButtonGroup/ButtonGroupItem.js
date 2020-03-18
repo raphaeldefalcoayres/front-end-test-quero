@@ -1,4 +1,6 @@
 import React, { useMemo } from 'react';
+import PropTypes from 'prop-types';
+
 import { Button } from './styles';
 import nameToId from '~/utils/nameToId';
 
@@ -20,3 +22,8 @@ export default function ButtonGroupItem({ children, checked }) {
     </Button>
   );
 }
+
+ButtonGroupItem.propTypes = {
+  children: PropTypes.node.isRequired,
+  checked: PropTypes.bool.isRequired,
+};
