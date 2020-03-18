@@ -161,7 +161,6 @@ export default function Modal({ open, setOpen, action }) {
   }, []);
 
   useEffect(() => {
-    console.log(filters);
     setScholarshipFilter(
       filter(
         scholarship,
@@ -179,7 +178,6 @@ export default function Modal({ open, setOpen, action }) {
         <Title>Adicionar bolsa</Title>
         <SubTitle>Filtre e adicione as bolsas de seu interesse</SubTitle>
         <Body>
-          {/* <form> */}
           <RowForm>
             <InputGroup>
               <label htmlFor="city">SELECIONE SUA CIDADE</label>
@@ -249,7 +247,6 @@ export default function Modal({ open, setOpen, action }) {
               <RangeSlider range={range} action={filterByRange} />
             </InputGroup>
           </RowForm>
-          {/* </form> */}
 
           <TableHead>
             <h5>Resultado:</h5>
