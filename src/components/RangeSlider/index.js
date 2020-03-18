@@ -21,6 +21,6 @@ export default function RangeSlider({ range, action }) {
 }
 
 RangeSlider.propTypes = {
-  range: PropTypes.bool.isRequired,
+  range: PropTypes.string.isRequired,
   action: PropTypes.func.isRequired,
 };

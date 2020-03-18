@@ -25,5 +25,9 @@ export default function ButtonGroupItem({ children, checked }) {
 
 ButtonGroupItem.propTypes = {
   children: PropTypes.node.isRequired,
-  checked: PropTypes.bool.isRequired,
+  checked: PropTypes.string,
+};
+
+ButtonGroupItem.defaultProps = {
+  checked: null,
 };

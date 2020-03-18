@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { MdClose, MdKeyboardArrowDown } from 'react-icons/md';
+import {
+  MdClose,
+  MdKeyboardArrowDown,
+  MdKeyboardArrowUp,
+} from 'react-icons/md';
 import filter from 'lodash/filter';
 import omit from 'lodash/omit';
 import overEvery from 'lodash/overEvery';
+import orderBy from 'lodash/orderBy';
 import PropTypes from 'prop-types';
+import uuid from 'react-uuid';
 
 import {
   Container,
@@ -37,6 +43,7 @@ export default function Modal({ open, setOpen, action }) {
   const [courses, setCourses] = useState([]);
   const [filters, setFilters] = useState([]);
   const [disabled, setDisabled] = useState(true);
+  const [orderAsc, setOrderAsc] = useState(true);
 
   async function loadScholarship() {
     if (!localStorage.getItem('scholarship')) {
@@ -55,8 +62,8 @@ export default function Modal({ open, setOpen, action }) {
           arrayCourses.push(item.course.name);
 
         return {
+          university_name: item.university.name,
           logo_url: item.university.logo_url,
-          logo_alt: item.university.name,
           discount_percentage: item.discount_percentage,
           city_name: item.campus.city,
           course_name: item.course.name,
@@ -110,8 +117,10 @@ export default function Modal({ open, setOpen, action }) {
   }
 
   function filterByKind(e) {
-    setFilters(omit(filters, ['course_kind']));
     const course_kind = e.target.value;
+    if (course_kind === filters.course_kind) {
+      setFilters(omit(filters, ['course_kind']));
+    }
     if (e.target.checked) {
       setFilters({
         ...filters,
@@ -134,6 +143,14 @@ export default function Modal({ open, setOpen, action }) {
         return o.price_with_discount <= rangeValue;
       },
     });
+  }
+
+  function handleChangeOrder() {
+    setOrderAsc(!orderAsc);
+    orderBy(scholarshipFilter, [
+      'university_name',
+      [orderAsc ? 'asc' : 'desc'],
+    ]);
   }
 
   useEffect(() => {
@@ -232,8 +249,9 @@ export default function Modal({ open, setOpen, action }) {
 
           <TableHead>
             <h5>Resultado:</h5>
-            <ButtonOrder>
-              Ordenar por <b>Nome da Faculdade</b> <MdKeyboardArrowDown />
+            <ButtonOrder onClick={() => handleChangeOrder()}>
+              Ordenar por <b>Nome da Faculdade</b>{' '}
+              {orderAsc ? <MdKeyboardArrowDown /> : <MdKeyboardArrowUp />}
             </ButtonOrder>
           </TableHead>
 
@@ -241,7 +259,7 @@ export default function Modal({ open, setOpen, action }) {
             <TableList>
               <tbody>
                 {scholarshipFilter.map((item, index) => (
-                  <tr key={item}>
+                  <tr key={uuid()}>
                     <td>
                       <Checkbox>
                         <label htmlFor="study-type-2">
@@ -256,7 +274,7 @@ export default function Modal({ open, setOpen, action }) {
                     </td>
                     <td>
                       <div>
-                        <img src={item.logo_url} alt={item.logo_alt} />
+                        <img src={item.logo_url} alt={item.university_name} />
                       </div>
                     </td>
                     <td>
@@ -293,6 +311,6 @@ export default function Modal({ open, setOpen, action }) {
 
 Modal.propTypes = {
   open: PropTypes.bool.isRequired,
-  setOpen: PropTypes.bool.isRequired,
+  setOpen: PropTypes.func.isRequired,
   action: PropTypes.func.isRequired,
 };
