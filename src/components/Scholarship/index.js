@@ -3,9 +3,9 @@ import { IoIosAddCircleOutline } from 'react-icons/io';
 
 import { Container } from './styles';
 
-export default function Scholarship() {
+export default function Scholarship({ action }) {
   return (
-    <Container>
+    <Container onClick={() => action()}>
       <div>
         <IoIosAddCircleOutline size="70" color="#18ACC4 " />
         <h3>Adicionar bolsa</h3>

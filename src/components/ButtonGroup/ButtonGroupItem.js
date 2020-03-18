@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Button } from './styles';
-import { nameToId } from '~/utils/nameToId';
+import nameToId from '~/utils/nameToId';
 
 export default function ButtonGroupItem({ children, checked }) {
   const id = useMemo(() => nameToId(children), [children]);

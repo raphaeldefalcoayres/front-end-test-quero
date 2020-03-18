@@ -12,6 +12,7 @@ export const Container = styled.div`
   max-width: 25%;
   margin: 25px 25px 25px 0;
   background: #fff;
+  cursor: pointer;
   &:last-child {
     margin-right: 0;
   }

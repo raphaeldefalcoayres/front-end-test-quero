@@ -1,4 +1,4 @@
-export const nameToId = name => {
+export default name => {
   return name
     .toString()
     .toLowerCase()
