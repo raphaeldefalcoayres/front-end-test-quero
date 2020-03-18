@@ -118,9 +118,9 @@ export default function Modal({ open, setOpen, action }) {
 
   function filterByKind(e) {
     const course_kind = e.target.value;
-    if (course_kind === filters.course_kind) {
-      setFilters(omit(filters, ['course_kind']));
-    }
+
+    setFilters(omit(filters, ['course_kind']));
+
     if (e.target.checked) {
       setFilters({
         ...filters,
@@ -147,10 +147,13 @@ export default function Modal({ open, setOpen, action }) {
 
   function handleChangeOrder() {
     setOrderAsc(!orderAsc);
-    orderBy(scholarshipFilter, [
-      'university_name',
-      [orderAsc ? 'asc' : 'desc'],
-    ]);
+    setScholarshipFilter(
+      orderBy(
+        scholarshipFilter,
+        ['university_name'],
+        [orderAsc ? 'desc' : 'asc']
+      )
+    );
   }
 
   useEffect(() => {
@@ -158,6 +161,7 @@ export default function Modal({ open, setOpen, action }) {
   }, []);
 
   useEffect(() => {
+    console.log(filters);
     setScholarshipFilter(
       filter(
         scholarship,
