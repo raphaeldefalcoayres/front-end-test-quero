@@ -11,7 +11,7 @@ export const Container = styled.div`
     outline: none;
     opacity: 0.7;
     transition: opacity 0.2s;
-    margin-top: 25px;
+    margin-top: 20px;
     border-radius: 5px;
 
     &:hover {

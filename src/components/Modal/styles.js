@@ -59,7 +59,7 @@ export const Body = styled.div`
   font-size: 14px;
   color: #1f2d30;
   min-height: 300px;
-  margin-top: 15px;
+  margin-top: 50px;
 `;
 export const Footer = styled.div`
   margin: 36px 0 0 0;
@@ -121,7 +121,7 @@ export const InputGroup = styled.div`
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   margin-right: 15px;
   position: relative;
 
@@ -136,9 +136,10 @@ export const InputGroup = styled.div`
   select,
   textarea {
     width: 100%;
-    padding: 10px 15px;
+    padding: 15px 15px;
     border-radius: 3px;
     border-color: #cfd2d2;
+    font-size: 0.875rem;
   }
 
   select {
@@ -147,15 +148,15 @@ export const InputGroup = styled.div`
 
   > label {
     width: 100%;
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 700;
     margin-bottom: 5px;
   }
 `;
 
 export const SelectIcon = styled.div`
   position: absolute;
-  bottom: 8px;
+  bottom: 15px;
   right: 10px;
   svg {
     width: 16px;
@@ -204,12 +205,13 @@ export const Checkbox = styled.div`
 
 export const RowCheckbox = styled.div`
   display: flex;
-  margin-top: auto;
+  margin-top: 25px;
 `;
 export const TableHead = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 30px;
   h5 {
     font-size: 1rem;
   }
@@ -234,7 +236,7 @@ export const ButtonOrder = styled.button`
 
 export const ContainerTable = styled.div`
   margin-top: 15px;
-  max-height: 500px;
+  max-height: 430px;
   overflow-y: auto;
   display: flex;
   border-bottom: 2px solid #eeefef;
