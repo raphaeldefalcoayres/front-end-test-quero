@@ -71,7 +71,7 @@ export default function Modal({
           id: uuid(),
           university_name: item.university.name,
           university_score: item.university.score,
-          enable: item.enable,
+          enabled: item.enabled,
           logo_url: item.university.logo_url,
           discount_percentage: item.discount_percentage,
           city_name: item.campus.city,

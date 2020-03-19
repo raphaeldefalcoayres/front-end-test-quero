@@ -15,6 +15,7 @@ import {
   Footer,
   ButtonExclude,
   ButtonShowOffer,
+  UnavailableText,
 } from './styles';
 import ScoreStars from '../ScoreStars';
 
@@ -33,15 +34,27 @@ export default function Scholarship({ data, action }) {
       </CourseKindAndShift>
       <CourseStartDate>Início das aulas em: {data.start_date}</CourseStartDate>
       <Separator />
-      <TitleMonthlyFee>Mensalidade com o Quero Bolsa:</TitleMonthlyFee>
-      <OldPrice>{data.full_price_formatted}</OldPrice>
-      <Price>
-        {data.price_with_discount_formated}
-        <small>/mês</small>
-      </Price>
+      <TitleMonthlyFee>
+        {data.enabled ? 'Mensalidade com o Quero Bolsa:' : 'Bolsa indisponível'}
+      </TitleMonthlyFee>
+      {data.enabled ? (
+        <>
+          <OldPrice>{data.full_price_formatted}</OldPrice>
+          <Price>
+            {data.price_with_discount_formated}
+            <small>/mês</small>
+          </Price>
+        </>
+      ) : (
+        <UnavailableText>
+          Entre m contato com nosso
+          <br /> atendimento para saber mais.
+        </UnavailableText>
+      )}
+
       <Footer>
         <ButtonExclude>Excluir</ButtonExclude>
-        <ButtonShowOffer>Ver oferta</ButtonShowOffer>
+        <ButtonShowOffer disabled={!data.enabled}>Ver oferta</ButtonShowOffer>
       </Footer>
     </Container>
   );

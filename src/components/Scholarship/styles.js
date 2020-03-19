@@ -126,3 +126,10 @@ export const ButtonShowOffer = styled.button`
       props.disabled ? '#CACDCE' : lighten(0.2, '#FDCB13')};
   }
 `;
+
+export const UnavailableText = styled.div`
+  font-size: 0.75rem;
+  color: #1f2d30;
+  line-height: 1.25rem;
+  margin-top: 10px;
+`;
