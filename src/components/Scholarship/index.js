@@ -19,7 +19,7 @@ import {
 } from './styles';
 import ScoreStars from '../ScoreStars';
 
-export default function Scholarship({ data, action }) {
+export default function Scholarship({ data, exclude }) {
   return (
     <Container>
       <img src={data.logo_url} alt={data.university_name} />
@@ -53,7 +53,7 @@ export default function Scholarship({ data, action }) {
       )}
 
       <Footer>
-        <ButtonExclude>Excluir</ButtonExclude>
+        <ButtonExclude onClick={() => exclude(data.id)}>Excluir</ButtonExclude>
         <ButtonShowOffer disabled={!data.enabled}>Ver oferta</ButtonShowOffer>
       </Footer>
     </Container>
@@ -62,9 +62,9 @@ export default function Scholarship({ data, action }) {
 
 Scholarship.propTypes = {
   data: PropTypes.oneOfType([PropTypes.object]).isRequired,
-  action: PropTypes.func,
+  exclude: PropTypes.func,
 };
 
 Scholarship.defaultProps = {
-  action: null,
+  exclude: null,
 };

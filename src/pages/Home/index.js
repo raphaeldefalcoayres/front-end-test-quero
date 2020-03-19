@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import filter from 'lodash/filter';
 import { ContainerGlobal } from '~/styles/global';
 import { Container, RowFilter, RowScholarship } from './styles';
 import Breadcrumb from '~/components/Breadcrumb';
@@ -19,14 +19,19 @@ export default function Home() {
     setOpen(true);
   }
   function handleSetMyCourses() {
-    console.log('handleSetMyCourses', selectCourses);
-    setMyCourses(myCourses.concat(selectCourses));
+    const newMyCourses = myCourses.concat(selectCourses);
+    setMyCourses(newMyCourses);
     setOpen(false);
-    localStorage.setItem(
-      'myCourses',
-      JSON.stringify(myCourses.concat(selectCourses))
-    );
+    localStorage.setItem('myCourses', JSON.stringify(newMyCourses));
     setselectCourses([]);
+  }
+
+  function handleExcludeMyCourse(id) {
+    const newMyCourses = filter(myCourses, o => {
+      return o.id !== id;
+    });
+    setMyCourses(newMyCourses);
+    localStorage.setItem('myCourses', JSON.stringify(newMyCourses));
   }
 
   useEffect(() => {
@@ -73,7 +78,11 @@ export default function Home() {
           <ScholarshipAdd action={handleOpenModal} />
           {myCourses.length > 0 &&
             myCourses.map(course => (
-              <Scholarship key={course.id} data={course} />
+              <Scholarship
+                key={course.id}
+                data={course}
+                exclude={handleExcludeMyCourse}
+              />
             ))}
         </RowScholarship>
       </ContainerGlobal>
