@@ -29,10 +29,10 @@ export const Container = styled.div`
   overflow: hidden;
 `;
 export const Box = styled.div`
-  min-width: 700px;
+  min-width: 750px;
   max-width: 90%;
   background: #fff;
-  margin: 175px auto 30px auto;
+  margin: 185px auto 30px auto;
   box-shadow: 0 0 5px -5px #000;
   animation: ${bounceIn} 0.3s 0s both;
   position: relative;
@@ -103,12 +103,12 @@ export const Close = styled.button`
   border: none;
   background: none;
   position: absolute;
-  top: -30px;
+  top: -50px;
   right: -5px;
   cursor: pointer;
   svg {
-    width: 28px;
-    height: 28px;
+    width: 36px;
+    height: 36px;
     color: #fff;
   }
 `;
@@ -234,7 +234,7 @@ export const ButtonOrder = styled.button`
 
 export const ContainerTable = styled.div`
   margin-top: 15px;
-  max-height: 310px;
+  max-height: 500px;
   overflow-y: auto;
   display: flex;
   border-bottom: 2px solid #eeefef;
@@ -261,23 +261,28 @@ export const TableList = styled.table`
     tr {
       td {
         border-top: 2px solid #eeefef;
-        padding: 10px 15px;
+        padding: 20px 15px;
 
         &:first-child {
           max-width: 35px;
+          padding-left: 0;
+        }
+        &:nth-child(2) {
+          width: 135px;
         }
         &:nth-child(3) {
-          width: 45%;
+          width: 55%;
           strong {
             color: #007a8d;
           }
         }
         &:last-child {
+          padding-right: 5px;
           div {
             text-align: right;
             b,
             strong {
-              color: #0fa866;
+              color: #287d37;
             }
           }
         }
@@ -287,7 +292,8 @@ export const TableList = styled.table`
           flex-direction: column;
           line-height: 20px;
           img {
-            height: 30px;
+            max-height: 28px;
+            max-width: 106px;
             display: block;
             align-self: center;
           }
