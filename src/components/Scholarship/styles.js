@@ -9,15 +9,8 @@ export const Container = styled.div`
   justify-content: start;
   text-align: center;
   padding: 25px 25px;
-  flex: 1;
-  max-width: 25%;
-  margin: 25px 25px 25px 0;
   background: #fff;
   flex-direction: column;
-
-  &:last-child {
-    margin-right: 0;
-  }
 
   img {
     max-height: 38px;

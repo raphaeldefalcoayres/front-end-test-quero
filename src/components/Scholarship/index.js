@@ -61,7 +61,7 @@ export default function Scholarship({ data, action }) {
 }
 
 Scholarship.propTypes = {
-  data: PropTypes.string.isRequired,
+  data: PropTypes.oneOfType([PropTypes.object]).isRequired,
   action: PropTypes.func,
 };
 

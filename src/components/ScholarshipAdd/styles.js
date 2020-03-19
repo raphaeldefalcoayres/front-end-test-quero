@@ -8,14 +8,8 @@ export const Container = styled.div`
   justify-content: center;
   text-align: center;
   padding: 25px 25px;
-  flex: 1;
-  max-width: 25%;
-  margin: 25px 25px 25px 0;
   background: #fff;
   cursor: pointer;
-  &:last-child {
-    margin-right: 0;
-  }
 
   h3 {
     margin-top: 35px;

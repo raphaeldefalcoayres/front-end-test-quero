@@ -20,8 +20,13 @@ export default function Home() {
   }
   function handleSetMyCourses() {
     console.log('handleSetMyCourses', selectCourses);
-    setMyCourses(selectCourses);
+    setMyCourses(myCourses.concat(selectCourses));
     setOpen(false);
+    localStorage.setItem(
+      'myCourses',
+      JSON.stringify(myCourses.concat(selectCourses))
+    );
+    setselectCourses([]);
   }
 
   useEffect(() => {
