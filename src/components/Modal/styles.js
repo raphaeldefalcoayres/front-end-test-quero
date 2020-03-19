@@ -92,7 +92,7 @@ export const ButtonAction = styled.button`
   ${props =>
     props.disabled
       ? 'cursor:not-allowed;pointer-evetns:none;'
-      : 'curor:pointer;'}
+      : 'cursor:pointer;'}
   &:hover {
     background: ${props =>
       props.disabled ? '#CACDCE' : lighten(0.2, '#FDCB13')};

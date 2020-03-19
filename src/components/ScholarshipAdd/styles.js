@@ -12,8 +12,7 @@ export const Container = styled.div`
   max-width: 25%;
   margin: 25px 25px 25px 0;
   background: #fff;
-  flex-direction: column;
-
+  cursor: pointer;
   &:last-child {
     margin-right: 0;
   }
@@ -27,13 +26,4 @@ export const Container = styled.div`
     line-height: 20px;
     font-size: 13px;
   }
-`;
-
-export const Rate = styled.div``;
-
-export const Separator = styled.div`
-  width: 100%;
-  height: 3px;
-  background: #eeefef;
-  margin: 15px 0 15px;
 `;

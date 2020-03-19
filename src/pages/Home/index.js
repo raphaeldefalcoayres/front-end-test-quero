@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { ContainerGlobal } from '~/styles/global';
 import { Container, RowFilter, RowScholarship } from './styles';
@@ -6,22 +6,46 @@ import Breadcrumb from '~/components/Breadcrumb';
 import BreadcrumbItem from '~/components/Breadcrumb/BreadcrumbItem';
 import ButtonGroup from '~/components/ButtonGroup';
 import ButtonGroupItem from '~/components/ButtonGroup/ButtonGroupItem';
+import ScholarshipAdd from '~/components/ScholarshipAdd';
 import Scholarship from '~/components/Scholarship';
 import Modal from '~/components/Modal';
 
 export default function Home() {
   const [open, setOpen] = useState(false);
+  const [myCourses, setMyCourses] = useState([]);
+  const [selectCourses, setselectCourses] = useState([]);
 
   function handleOpenModal() {
     setOpen(true);
   }
-  function handleCancelMeetup() {
+  function handleSetMyCourses() {
+    console.log('handleSetMyCourses', selectCourses);
+    setMyCourses(selectCourses);
     setOpen(false);
   }
 
+  useEffect(() => {
+    console.log('myCourses', myCourses);
+  }, [myCourses]);
+
+  useEffect(() => {
+    console.log('selectCourses', selectCourses);
+  }, [selectCourses]);
+  useEffect(() => {
+    if (localStorage.getItem('myCourses')) {
+      setMyCourses(JSON.parse(localStorage.getItem('myCourses')));
+    }
+  }, []);
+
   return (
     <Container>
-      <Modal open={open} setOpen={setOpen} action={handleCancelMeetup} />
+      <Modal
+        open={open}
+        setOpen={setOpen}
+        action={handleSetMyCourses}
+        selectCourses={selectCourses}
+        setselectCourses={setselectCourses}
+      />
       <ContainerGlobal>
         <Breadcrumb>
           <BreadcrumbItem href="/">Home</BreadcrumbItem>
@@ -41,7 +65,11 @@ export default function Home() {
           </ButtonGroup>
         </RowFilter>
         <RowScholarship>
-          <Scholarship action={handleOpenModal} />
+          <ScholarshipAdd action={handleOpenModal} />
+          {myCourses.length > 0 &&
+            myCourses.map(course => (
+              <Scholarship key={course.id} data={course} />
+            ))}
         </RowScholarship>
       </ContainerGlobal>
     </Container>

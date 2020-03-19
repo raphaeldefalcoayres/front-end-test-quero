@@ -36,7 +36,13 @@ import RangeSlider from '../RangeSlider';
 import api from '~/services/api';
 import formatMoney from '~/utils/formatMoney';
 
-export default function Modal({ open, setOpen, action }) {
+export default function Modal({
+  open,
+  setOpen,
+  action,
+  selectCourses,
+  setselectCourses,
+}) {
   const [scholarship, setScholarship] = useState([]);
   const [scholarshipFilter, setScholarshipFilter] = useState([]);
   const [cities, setCities] = useState([]);
@@ -62,17 +68,24 @@ export default function Modal({ open, setOpen, action }) {
           arrayCourses.push(item.course.name);
 
         return {
+          id: uuid(),
           university_name: item.university.name,
+          university_score: item.university.score,
+          enable: item.enable,
           logo_url: item.university.logo_url,
           discount_percentage: item.discount_percentage,
           city_name: item.campus.city,
           course_name: item.course.name,
           course_level: item.course.level,
           course_kind: item.course.kind,
+          course_shift: item.course.shift,
           price_with_discount: item.price_with_discount,
           price_with_discount_formated: formatMoney.format(
             item.price_with_discount
           ),
+          full_price_formatted: formatMoney.format(item.full_price),
+          enrollment_semester: item.enrollment_semester,
+          start_date: item.start_date,
         };
       });
 
@@ -153,6 +166,16 @@ export default function Modal({ open, setOpen, action }) {
         ['university_name'],
         [orderAsc ? 'desc' : 'asc']
       )
+    );
+  }
+
+  function handleSelectCourse(e) {
+    setDisabled(false);
+    const id = e.target.value;
+    setselectCourses([...selectCourses, filter(scholarship, { id })[0]]);
+    localStorage.setItem(
+      'myCourses',
+      JSON.stringify([...selectCourses, filter(scholarship, { id })[0]])
     );
   }
 
@@ -259,42 +282,47 @@ export default function Modal({ open, setOpen, action }) {
           <ContainerTable>
             <TableList>
               <tbody>
-                {scholarshipFilter.map((item, index) => (
-                  <tr key={uuid()}>
-                    <td>
-                      <Checkbox>
-                        <label htmlFor="study-type-2">
-                          <input
-                            type="checkbox"
-                            name="study-type"
-                            id="course"
-                            value={index}
-                          />{' '}
-                        </label>
-                      </Checkbox>
-                    </td>
-                    <td>
-                      <div>
-                        <img src={item.logo_url} alt={item.university_name} />
-                      </div>
-                    </td>
-                    <td>
-                      <div>
-                        <strong>{item.course_name}</strong>
-                        <span>{item.course_level}</span>
-                      </div>
-                    </td>
-                    <td>
-                      <div>
-                        <span>
-                          {' '}
-                          Bolsa de <b>{item.discount_percentage}%</b>
-                        </span>
-                        <strong>{item.price_with_discount_formated}/mês</strong>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
+                {scholarshipFilter.map(item => {
+                  return (
+                    <tr id={`tr-${item.id}`} key={item.id}>
+                      <td>
+                        <Checkbox>
+                          <label htmlFor={`checkbox-${item.id}`}>
+                            <input
+                              type="checkbox"
+                              name="courses"
+                              id={`checkbox-${item.id}`}
+                              defaultValue={item.id}
+                              onClick={e => handleSelectCourse(e)}
+                            />{' '}
+                          </label>
+                        </Checkbox>
+                      </td>
+                      <td>
+                        <div>
+                          <img src={item.logo_url} alt={item.university_name} />
+                        </div>
+                      </td>
+                      <td>
+                        <div>
+                          <strong>{item.course_name}</strong>
+                          <span>{item.course_level}</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div>
+                          <span>
+                            {' '}
+                            Bolsa de <b>{item.discount_percentage}%</b>
+                          </span>
+                          <strong>
+                            {item.price_with_discount_formated}/mês
+                          </strong>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </TableList>
           </ContainerTable>
