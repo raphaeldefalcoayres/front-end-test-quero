@@ -43,9 +43,9 @@ export default function Modal({
   data,
   action,
   selectCourses,
+  // eslint-disable-next-line react/prop-types
   setselectCourses,
   myCourses,
-  setMyCourses,
 }) {
   const [scholarshipFilter, setScholarshipFilter] = useState(data.scholarship);
   const [filters, setFilters] = useState([]);
@@ -315,5 +315,18 @@ export default function Modal({
 Modal.propTypes = {
   open: PropTypes.bool.isRequired,
   setOpen: PropTypes.func.isRequired,
+  selectCourses: PropTypes.shape([]).isRequired,
+  // eslint-disable-next-line react/no-unused-prop-types
+  setSelectCourses: PropTypes.func.isRequired,
+  myCourses: PropTypes.shape([]).isRequired,
+  data: PropTypes.shape({
+    scholarship: PropTypes.array,
+    cities: PropTypes.array,
+    courses: PropTypes.array,
+  }),
   action: PropTypes.func.isRequired,
+};
+
+Modal.defaultProps = {
+  data: {},
 };
