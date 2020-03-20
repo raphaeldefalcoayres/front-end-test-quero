@@ -124,9 +124,10 @@ export default function Modal({
     if (e.target.checked) {
       const filtered = filter(data.scholarship, { id })[0];
 
-      const finded = find(myCourses, ['id', id]);
+      const findedInMyCourses = find(myCourses, ['id', id]);
+      const findedInSelectCourses = find(selectCourses, ['id', id]);
 
-      if (!finded) {
+      if (!findedInMyCourses && !findedInSelectCourses) {
         setselectCourses([...selectCourses, filtered]);
         localStorage.setItem(
           'myCourses',
@@ -164,7 +165,7 @@ export default function Modal({
   useEffect(() => {
     const newScholarship = differenceBy(data.scholarship, myCourses, 'id');
     setScholarshipFilter(newScholarship);
-  }, [open]);
+  }, [open, data.scholarship, myCourses]);
 
   return (
     <Container open={open}>
@@ -315,10 +316,10 @@ export default function Modal({
 Modal.propTypes = {
   open: PropTypes.bool.isRequired,
   setOpen: PropTypes.func.isRequired,
-  selectCourses: PropTypes.shape([]).isRequired,
+  selectCourses: PropTypes.arrayOf(PropTypes.object).isRequired,
   // eslint-disable-next-line react/no-unused-prop-types
-  setSelectCourses: PropTypes.func.isRequired,
-  myCourses: PropTypes.shape([]).isRequired,
+  setSelectCourses: PropTypes.func,
+  myCourses: PropTypes.arrayOf(PropTypes.object).isRequired,
   data: PropTypes.shape({
     scholarship: PropTypes.array,
     cities: PropTypes.array,
@@ -329,4 +330,5 @@ Modal.propTypes = {
 
 Modal.defaultProps = {
   data: {},
+  setSelectCourses: null,
 };
