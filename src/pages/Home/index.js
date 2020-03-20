@@ -87,6 +87,7 @@ export default function Home() {
   function handleOpenModal() {
     setOpen(true);
   }
+
   function handleSetMyCourses() {
     const newMyCourses = myCourses.concat(selectCourses);
     setMyCourses(newMyCourses);
@@ -110,6 +111,7 @@ export default function Home() {
     }
     setMyCourses(newMyCourses);
   }
+
   useEffect(() => {
     loadScholarship();
     if (localStorage.getItem('myCourses')) {

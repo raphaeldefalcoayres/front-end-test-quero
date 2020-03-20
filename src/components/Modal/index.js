@@ -47,6 +47,7 @@ export default function Modal({
   const [orderAsc, setOrderAsc] = useState(true);
 
   function filterByCity(e) {
+    setFilters(omit(filters, ['city_name']));
     const city = e.target.value;
     if (e.target.value !== '') {
       setFilters({
