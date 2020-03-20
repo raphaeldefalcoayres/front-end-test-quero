@@ -144,9 +144,10 @@ export default function Modal({
   }
 
   useEffect(() => {
+    const newScholarship = differenceBy(data.scholarship, myCourses, 'id');
     setScholarshipFilter(
       filter(
-        data.scholarship,
+        newScholarship,
         overEvery(Object.keys(filters).map(key => filters[key]))
       )
     );
