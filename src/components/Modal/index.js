@@ -4,10 +4,14 @@ import {
   MdKeyboardArrowDown,
   MdKeyboardArrowUp,
 } from 'react-icons/md';
+
 import filter from 'lodash/filter';
 import omit from 'lodash/omit';
 import overEvery from 'lodash/overEvery';
 import orderBy from 'lodash/orderBy';
+import find from 'lodash/find';
+import differenceBy from 'lodash/differenceBy';
+
 import PropTypes from 'prop-types';
 import formatMoney from '~/utils/formatMoney';
 
@@ -40,6 +44,8 @@ export default function Modal({
   action,
   selectCourses,
   setselectCourses,
+  myCourses,
+  setMyCourses,
 }) {
   const [scholarshipFilter, setScholarshipFilter] = useState(data.scholarship);
   const [filters, setFilters] = useState([]);
@@ -113,13 +119,28 @@ export default function Modal({
   }
 
   function handleSelectCourse(e) {
-    setDisabled(false);
     const id = e.target.value;
-    setselectCourses([...selectCourses, filter(data.scholarship, { id })[0]]);
-    localStorage.setItem(
-      'myCourses',
-      JSON.stringify([...selectCourses, filter(data.scholarship, { id })[0]])
-    );
+
+    if (e.target.checked) {
+      const filtered = filter(data.scholarship, { id })[0];
+
+      const finded = find(myCourses, ['id', id]);
+
+      if (!finded) {
+        setselectCourses([...selectCourses, filtered]);
+        localStorage.setItem(
+          'myCourses',
+          JSON.stringify([...selectCourses, filtered])
+        );
+      }
+    } else {
+      const removed = filter(selectCourses, o => {
+        return o.id !== id;
+      });
+
+      setselectCourses(removed);
+      localStorage.setItem('myCourses', JSON.stringify(removed));
+    }
   }
 
   useEffect(() => {
@@ -130,6 +151,19 @@ export default function Modal({
       )
     );
   }, [filters]); // eslint-disable-line
+
+  useEffect(() => {
+    if (selectCourses.length > 0) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  }, [selectCourses]);
+
+  useEffect(() => {
+    const newScholarship = differenceBy(data.scholarship, myCourses, 'id');
+    setScholarshipFilter(newScholarship);
+  }, [open]);
 
   return (
     <Container open={open}>

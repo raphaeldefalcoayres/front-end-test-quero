@@ -9,7 +9,7 @@ export default function ScholarshipAdd({ action }) {
     <Container onClick={() => action()}>
       <div>
         <IoIosAddCircleOutline size="70" color="#18ACC4 " />
-        <h3>Adicionar bolsa</h3>
+        <h3>Adicionar curso</h3>
         <h6>
           Clique para adicionar bolsas de
           <br /> cursos do seu interesse

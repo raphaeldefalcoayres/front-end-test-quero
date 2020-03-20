@@ -131,6 +131,8 @@ export default function Home() {
         action={handleSetMyCourses}
         selectCourses={selectCourses}
         setselectCourses={setselectCourses}
+        myCourses={myCourses}
+        setMyCourses={setMyCourses}
       />
       <ContainerGlobal>
         <Breadcrumb>
@@ -140,8 +142,8 @@ export default function Home() {
         </Breadcrumb>
         <h1>Bolsas Favoritas</h1>
         <h4>
-          Adicione bolsas de cursos e faculdades do seu interesse e receba
-          atualizações com as melhores ofertas disponíveis.
+          Adicione os cursos e faculdades de seu interesse e receba atualizações
+          com as melhores ofertas.
         </h4>
         <RowFilter>
           <ButtonGroup>
