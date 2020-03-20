@@ -4,13 +4,16 @@ import PropTypes from 'prop-types';
 import { Button } from './styles';
 import nameToId from '~/utils/nameToId';
 
-export default function ButtonGroupItem({ children, checked }) {
+export default function ButtonGroupItem({ children, checked, action }) {
   const id = useMemo(() => nameToId(children), [children]);
-  function handleSelect(e) {
-    e.target.checked = true;
+  let label = children;
+  if (children.indexOf('.') !== -1) {
+    const name_parts = children.split('.');
+    label = `${name_parts[1]}° Semestre de ${name_parts[0]}`;
   }
+
   return (
-    <Button type="button" onClick={e => handleSelect(e)}>
+    <Button type="button" onClick={e => action(children)}>
       <input
         type="radio"
         name="button-group"
@@ -18,7 +21,7 @@ export default function ButtonGroupItem({ children, checked }) {
         id={id}
         value={id}
       />
-      <label htmlFor={id}>{children}</label>
+      <label htmlFor={id}>{label}</label>
     </Button>
   );
 }
@@ -26,8 +29,10 @@ export default function ButtonGroupItem({ children, checked }) {
 ButtonGroupItem.propTypes = {
   children: PropTypes.node.isRequired,
   checked: PropTypes.string,
+  action: PropTypes.func,
 };
 
 ButtonGroupItem.defaultProps = {
   checked: null,
+  action: null,
 };

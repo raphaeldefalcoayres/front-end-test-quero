@@ -61,7 +61,7 @@ export const Body = styled.div`
   min-height: 300px;
   margin-top: 50px;
 `;
-export const Footer = styled.div`
+export const Footer = styled.footer`
   margin: 36px 0 0 0;
   font-size: 14px;
   display: flex;

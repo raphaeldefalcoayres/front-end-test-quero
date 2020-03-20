@@ -9,7 +9,7 @@ import omit from 'lodash/omit';
 import overEvery from 'lodash/overEvery';
 import orderBy from 'lodash/orderBy';
 import PropTypes from 'prop-types';
-import uuid from 'react-uuid';
+import formatMoney from '~/utils/formatMoney';
 
 import {
   Container,
@@ -33,76 +33,18 @@ import {
 } from './styles';
 import RangeSlider from '../RangeSlider';
 
-import api from '~/services/api';
-import formatMoney from '~/utils/formatMoney';
-
 export default function Modal({
   open,
   setOpen,
+  data,
   action,
   selectCourses,
   setselectCourses,
 }) {
-  const [scholarship, setScholarship] = useState([]);
-  const [scholarshipFilter, setScholarshipFilter] = useState([]);
-  const [cities, setCities] = useState([]);
-  const [courses, setCourses] = useState([]);
+  const [scholarshipFilter, setScholarshipFilter] = useState(data.scholarship);
   const [filters, setFilters] = useState([]);
   const [disabled, setDisabled] = useState(true);
   const [orderAsc, setOrderAsc] = useState(true);
-
-  async function loadScholarship() {
-    if (!localStorage.getItem('scholarship')) {
-      const response = await api.get(
-        'scholarship?_sort=university.name&_order=asc'
-      );
-
-      const arrayCities = [];
-      const arrayCourses = [];
-
-      const data = await response.data.map(item => {
-        if (arrayCities.indexOf(item.campus.city) === -1)
-          arrayCities.push(item.campus.city);
-
-        if (arrayCourses.indexOf(item.course.name) === -1)
-          arrayCourses.push(item.course.name);
-
-        return {
-          id: uuid(),
-          university_name: item.university.name,
-          university_score: item.university.score,
-          enabled: item.enabled,
-          logo_url: item.university.logo_url,
-          discount_percentage: item.discount_percentage,
-          city_name: item.campus.city,
-          course_name: item.course.name,
-          course_level: item.course.level,
-          course_kind: item.course.kind,
-          course_shift: item.course.shift,
-          price_with_discount: item.price_with_discount,
-          price_with_discount_formated: formatMoney.format(
-            item.price_with_discount
-          ),
-          full_price_formatted: formatMoney.format(item.full_price),
-          enrollment_semester: item.enrollment_semester,
-          start_date: item.start_date,
-        };
-      });
-
-      localStorage.setItem('scholarship', JSON.stringify(data));
-      localStorage.setItem('cities', JSON.stringify(arrayCities));
-      localStorage.setItem('courses', JSON.stringify(arrayCourses));
-      setScholarship(data);
-      setScholarshipFilter(data);
-      setCities(arrayCities);
-      setCourses(arrayCourses);
-    } else {
-      setScholarship(JSON.parse(localStorage.getItem('scholarship')));
-      setScholarshipFilter(JSON.parse(localStorage.getItem('scholarship')));
-      setCities(JSON.parse(localStorage.getItem('cities')));
-      setCourses(JSON.parse(localStorage.getItem('courses')));
-    }
-  }
 
   function filterByCity(e) {
     const city = e.target.value;
@@ -172,21 +114,17 @@ export default function Modal({
   function handleSelectCourse(e) {
     setDisabled(false);
     const id = e.target.value;
-    setselectCourses([...selectCourses, filter(scholarship, { id })[0]]);
+    setselectCourses([...selectCourses, filter(data.scholarship, { id })[0]]);
     localStorage.setItem(
       'myCourses',
-      JSON.stringify([...selectCourses, filter(scholarship, { id })[0]])
+      JSON.stringify([...selectCourses, filter(data.scholarship, { id })[0]])
     );
   }
 
   useEffect(() => {
-    loadScholarship();
-  }, []);
-
-  useEffect(() => {
     setScholarshipFilter(
       filter(
-        scholarship,
+        data.scholarship,
         overEvery(Object.keys(filters).map(key => filters[key]))
       )
     );
@@ -206,8 +144,8 @@ export default function Modal({
               <label htmlFor="city">SELECIONE SUA CIDADE</label>
               <select id="city" onChange={e => filterByCity(e)}>
                 <option value=""> </option>
-                {cities.length > 0 &&
-                  cities.map(city => (
+                {data.cities.length > 0 &&
+                  data.cities.map(city => (
                     <option key={city} value={city}>
                       {city}
                     </option>
@@ -223,8 +161,8 @@ export default function Modal({
               </label>
               <select id="course" onChange={e => filterByCourse(e)}>
                 <option value=""> </option>
-                {courses.length > 0 &&
-                  courses.map(course => (
+                {data.courses.length > 0 &&
+                  data.courses.map(course => (
                     <option key={course} value={course}>
                       {course}
                     </option>
