@@ -26,6 +26,8 @@ export default function Home() {
 
   const [semesters, setSemesters] = useState([]);
 
+  const [filters, setFilters] = useState([]);
+
   async function loadScholarship() {
     if (!localStorage.getItem('scholarship')) {
       const response = await api.get(
@@ -86,6 +88,30 @@ export default function Home() {
 
   function handleOpenModal() {
     setOpen(true);
+    const newMyCourses = JSON.parse(localStorage.getItem('myCourses'));
+    setMyCourses(newMyCourses);
+    document.getElementById('todos-os-semestres').checked = true;
+  }
+
+  function clearInputsFilter() {
+    const selects = document.querySelectorAll('#modal-filter select');
+    const cheboxes = document.querySelectorAll(
+      '#modal-filter input[type=checkbox]'
+    );
+
+    selects.forEach(element => {
+      element.selectedIndex = 0;
+    });
+
+    cheboxes.forEach(element => {
+      element.checked = false;
+    });
+
+    const range = document.querySelector('#modal-filter input[type=range]');
+    const rangeValue = document.querySelector('#modal-filter #demo');
+
+    range.value = 10000;
+    rangeValue.innerHTML = 'R$ 10.000,00';
   }
 
   function handleSetMyCourses() {
@@ -94,6 +120,8 @@ export default function Home() {
     setOpen(false);
     localStorage.setItem('myCourses', JSON.stringify(newMyCourses));
     setselectCourses([]);
+    setFilters([]);
+    clearInputsFilter();
   }
 
   function handleExcludeMyCourse(id) {
@@ -125,6 +153,7 @@ export default function Home() {
   return (
     <Container>
       <Modal
+        modalId="modal-filter"
         open={open}
         setOpen={setOpen}
         data={{ scholarship, cities, courses }}
@@ -133,6 +162,8 @@ export default function Home() {
         setselectCourses={setselectCourses}
         myCourses={myCourses}
         setMyCourses={setMyCourses}
+        filters={filters}
+        setFilters={setFilters}
       />
       <ContainerGlobal>
         <Breadcrumb>

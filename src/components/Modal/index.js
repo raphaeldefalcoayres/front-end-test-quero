@@ -38,6 +38,7 @@ import {
 import RangeSlider from '../RangeSlider';
 
 export default function Modal({
+  modalId,
   open,
   setOpen,
   data,
@@ -45,10 +46,12 @@ export default function Modal({
   selectCourses,
   // eslint-disable-next-line react/prop-types
   setselectCourses,
+  filters,
+  setFilters,
   myCourses,
 }) {
   const [scholarshipFilter, setScholarshipFilter] = useState(data.scholarship);
-  const [filters, setFilters] = useState([]);
+
   const [disabled, setDisabled] = useState(true);
   const [orderAsc, setOrderAsc] = useState(true);
 
@@ -168,7 +171,7 @@ export default function Modal({
   }, [open, data.scholarship, myCourses]);
 
   return (
-    <Container open={open}>
+    <Container open={open} id={modalId}>
       <Box>
         <Close onClick={() => setOpen(false)}>
           <MdClose size={16} />
