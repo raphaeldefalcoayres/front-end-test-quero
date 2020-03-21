@@ -16,6 +16,10 @@ export const Container = styled.div`
     max-height: 38px;
     max-width: 100%;
   }
+
+  @media screen and (max-width: 996px) {
+    padding: 15px;
+  }
 `;
 
 export const Rate = styled.div`
@@ -99,6 +103,10 @@ export const ButtonExclude = styled.button`
   border: 1px solid #007a8d;
   cursor: pointer;
   letter-spacing: 0.5px;
+  @media screen and (max-width: 996px) {
+    font-size: 1rem;
+    padding: 10px 25px;
+  }
 `;
 export const ButtonShowOffer = styled.button`
   font-size: 0.875rem;
@@ -117,6 +125,11 @@ export const ButtonShowOffer = styled.button`
   &:hover {
     background: ${props =>
       props.disabled ? '#CACDCE' : lighten(0.2, '#FDCB13')};
+  }
+  @media screen and (max-width: 996px) {
+    font-size: 1rem;
+    padding: 10px 45px;
+    margin-left: 15px;
   }
 `;
 

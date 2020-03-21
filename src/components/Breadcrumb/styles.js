@@ -21,7 +21,30 @@ export const Container = styled.ul`
   }
 
   li:last-child:after {
-    content: '';
-    margin: 0;
+    display: none;
+  }
+
+  @media screen and (max-width: 996px) {
+    padding-top: 10px;
+    padding-bottom: 5px;
+
+    li {
+      display: none;
+      font-size: 1rem;
+      &::after {
+        display: none;
+      }
+      a::before {
+        content: '‹';
+        font-size: 2rem;
+        margin-right: 10px;
+        color: #007a8d;
+        top: 3px;
+        position: relative;
+      }
+    }
+    li:nth-last-child(2) {
+      display: block;
+    }
   }
 `;

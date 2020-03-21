@@ -19,28 +19,33 @@ export default function Footer() {
             <FaWhatsapp size="42" />
             <div>
               <strong>0800 123 2222</strong>
-              Seg - Sex 8h-22h
+              <b>0800 123 2222</b>
+              <span>Seg - Sex 8h-22h</span>
+              <small>Segunda a sexta de 8h às 22h</small>
             </div>
           </Col>
           <Col>
             <FaRegComments size="42" />
             <div>
               <strong>Chat ao vivo</strong>
-              Seg - Sex 8h-22h
+              <b>Chat</b>
+              <span>Seg - Sex 8h-22h</span>
             </div>
           </Col>
           <Col>
             <FaRegEnvelope size="42" />
             <div>
               <strong>Mande um e-mail</strong>
-              Respondemos rapidinho
+              <b>E-mail</b>
+              <span>Respondemos rapidinho</span>
             </div>
           </Col>
           <Col>
             <MdInfoOutline size="42" />
             <div>
               <strong>Central de ajuda</strong>
-              Encontre todas as respostas
+              <b>Ajuda</b>
+              <span>Encontre todas as respostas</span>
             </div>
           </Col>
         </ContainerGlobal>

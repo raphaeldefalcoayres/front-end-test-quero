@@ -74,6 +74,7 @@ export default function Home() {
       localStorage.setItem('cities', JSON.stringify(arrayCities));
       localStorage.setItem('courses', JSON.stringify(arrayCourses));
       localStorage.setItem('semesters', JSON.stringify(arraySemesters));
+      localStorage.setItem('myCourses', JSON.stringify([]));
 
       setScholarship(data);
       setCities(arrayCities);

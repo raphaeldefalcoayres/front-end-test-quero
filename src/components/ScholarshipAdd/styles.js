@@ -20,4 +20,11 @@ export const Container = styled.div`
     line-height: 20px;
     font-size: 13px;
   }
+
+  @media screen and (max-width: 996px) {
+    height: 200px;
+    h3 {
+      margin-top: 20px;
+    }
+  }
 `;

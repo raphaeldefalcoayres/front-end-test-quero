@@ -41,6 +41,9 @@ export const Head = styled.div`
         display: flex;
         align-items: center;
         padding: 5px 25px;
+        small {
+          display: none;
+        }
         div {
           display: flex;
           flex-direction: column;
@@ -65,11 +68,51 @@ export const Head = styled.div`
   }
   z-index: 1;
   box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.3);
+
+  @media screen and (max-width: 996px) {
+    height: 60px;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+
+    #item-call {
+      display: none;
+    }
+    img {
+      height: 40px;
+    }
+
+    ul {
+      li {
+        a {
+          flex-direction: column;
+          padding: 0 20px;
+          small {
+            display: block;
+            font-size: 0.875rem;
+          }
+          span {
+            display: none;
+          }
+          svg {
+            margin: 0;
+            width: 28px;
+            height: 28px;
+          }
+        }
+      }
+    }
+  }
 `;
 export const Nav = styled.nav`
   background: #18acc4;
   display: flex;
   align-items: center;
+
+  small,
+  button {
+    display: none;
+  }
 
   ul {
     list-style: none;
@@ -95,6 +138,55 @@ export const Nav = styled.nav`
       }
     }
   }
+
+  @media screen and (max-width: 996px) {
+    height: 40px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+
+    button {
+      border: none;
+      background: none;
+      padding: 0;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      svg {
+        margin-left: 5px;
+      }
+
+      &:focus ~ ul,
+      &:focus-within ~ ul {
+        display: block;
+      }
+    }
+
+    small {
+      display: block;
+      font-size: 1rem;
+    }
+    ul {
+      display: none;
+      position: absolute;
+      flex-direction: column;
+      right: 0;
+      top: 28px;
+      background: #18acc4;
+      box-shadow: inset -5px 10px 12px -11px rgba(0, 0, 0, 0.5);
+    }
+  }
 `;
 
 export const ProfileUser = styled.div`
@@ -105,8 +197,41 @@ export const ProfileUser = styled.div`
   justify-content: flex-end;
   display: flex;
   align-items: center;
+
   svg {
     font-size: 26px;
     margin-left: 10px;
+  }
+  small {
+    display: none;
+  }
+
+  @media screen and (max-width: 996px) {
+    justify-content: flex-end;
+    div {
+      border-left: 3px solid #eeefef;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding-left: 15px;
+    }
+    small {
+      display: block;
+      font-size: 0.875rem;
+    }
+    span {
+      display: none;
+    }
+    svg {
+      margin: 0;
+      width: 24px;
+      height: 24px;
+    }
+  }
+`;
+
+export const Logo = styled.div`
+  @media screen and (max-width: 996px) {
   }
 `;

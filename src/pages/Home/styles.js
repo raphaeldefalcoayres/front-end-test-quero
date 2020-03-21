@@ -18,9 +18,12 @@ export const RowFilter = styled.div`
 `;
 
 export const RowScholarship = styled.div`
-  min-height: 750px;
+  min-height: 700px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(266px, 1fr));
   grid-gap: 25px;
   margin-bottom: 30px;
+  @media screen and (max-width: 996px) {
+    min-height: 350px !important;
+  }
 `;

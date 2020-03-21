@@ -29,15 +29,20 @@ export const Container = styled.div`
   overflow: hidden;
 `;
 export const Box = styled.div`
-  min-width: 750px;
-  max-width: 90%;
+  width: 750px;
+  max-width: 100%;
   background: #fff;
   margin: 185px auto 30px auto;
   box-shadow: 0 0 5px -5px #000;
   animation: ${bounceIn} 0.3s 0s both;
   position: relative;
-  padding: 38px 38px;
+  padding: 38px;
   display: table;
+
+  @media screen and (max-width: 996px) {
+    margin: 60px 0 0 0;
+    padding: 25px;
+  }
 `;
 export const Title = styled.h2`
   font-size: 20px;
@@ -45,6 +50,10 @@ export const Title = styled.h2`
   margin: 5px 0;
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 996px) {
+    margin-top: 0;
+  }
 `;
 export const SubTitle = styled.h5`
   font-size: 14px;
@@ -60,17 +69,23 @@ export const Body = styled.div`
   color: #1f2d30;
   min-height: 300px;
   margin-top: 50px;
+  @media screen and (max-width: 996px) {
+    margin-top: 32px;
+  }
 `;
 export const Footer = styled.footer`
   margin: 36px 0 0 0;
   font-size: 14px;
   display: flex;
   justify-content: flex-end;
+  @media screen and (max-width: 996px) {
+    margin-top: 25px;
+  }
 `;
 export const ButtonDefault = styled.button`
   padding: 10px 25px;
   font-weight: 600;
-  border-radius: 2px;
+  border-radius: 3px;
   margin-left: 5px;
   background: #fff;
   color: #007a8d;
@@ -82,7 +97,7 @@ export const ButtonDefault = styled.button`
 export const ButtonAction = styled.button`
   padding: 10px 25px;
   font-weight: 600;
-  border-radius: 2px;
+  border-radius: 3px;
   margin-left: 5px;
   background: ${props => (props.disabled ? '#CACDCE' : '#FDCB13')};
   color: ${props => (props.disabled ? '#83898B' : '#1F2D30')};
@@ -116,6 +131,10 @@ export const Close = styled.button`
 export const RowForm = styled.div`
   display: flex;
   align-items: stretch;
+
+  @media screen and (max-width: 996px) {
+    flex-direction: column;
+  }
 `;
 export const InputGroup = styled.div`
   display: flex;
@@ -151,6 +170,10 @@ export const InputGroup = styled.div`
     font-size: 13px;
     font-weight: 700;
     margin-bottom: 5px;
+  }
+
+  @media screen and (max-width: 996px) {
+    margin-right: 0;
   }
 `;
 
@@ -215,6 +238,11 @@ export const TableHead = styled.div`
   h5 {
     font-size: 1rem;
   }
+
+  @media screen and (max-width: 996px) {
+    margin-top: 15px;
+    align-items: baseline;
+  }
 `;
 export const ButtonOrder = styled.button`
   background: none;
@@ -226,11 +254,17 @@ export const ButtonOrder = styled.button`
   b {
     color: #18acc4;
     margin-left: 5px;
+    display: flex;
   }
   svg {
     width: 18px;
     height: 18px;
     color: #18acc4;
+  }
+
+  @media screen and (max-width: 996px) {
+    flex-direction: column;
+    align-items: flex-end;
   }
 `;
 
@@ -269,23 +303,27 @@ export const TableList = styled.table`
           max-width: 35px;
           padding-left: 0;
         }
-        &:nth-child(2) {
-          width: 135px;
-        }
+
         &:nth-child(3) {
-          width: 55%;
+          width: 70%;
+        }
+
+        &:nth-child(3) > div {
+          flex-direction: row;
+          justify-content: space-between;
+        }
+
+        div div:first-child {
+          width: 80%;
           strong {
             color: #007a8d;
           }
         }
-        &:last-child {
-          padding-right: 5px;
-          div {
-            text-align: right;
-            b,
-            strong {
-              color: #287d37;
-            }
+        div div:last-child {
+          text-align: right;
+          b,
+          strong {
+            color: #287d37;
           }
         }
 
@@ -298,6 +336,41 @@ export const TableList = styled.table`
             max-width: 106px;
             display: block;
             align-self: center;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 996px) {
+    tbody {
+      tr {
+        td {
+          padding: 10px 10px;
+          &:first-child {
+            max-width: 20px;
+          }
+          &:nth-child(2) {
+            max-width: 110px;
+          }
+          div {
+            img {
+              max-width: 90px;
+            }
+          }
+          &:nth-child(3) {
+            > div {
+              flex-direction: column;
+              align-items: start;
+
+              div {
+                align-items: start;
+                margin-bottom: 10px;
+                &:last-child {
+                  margin-bottom: 0;
+                }
+              }
+            }
           }
         }
       }

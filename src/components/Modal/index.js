@@ -252,8 +252,11 @@ export default function Modal({
           <TableHead>
             <h5>Resultado:</h5>
             <ButtonOrder onClick={() => handleChangeOrder()}>
-              Ordenar por <b>Nome da Faculdade</b>{' '}
-              {orderAsc ? <MdKeyboardArrowDown /> : <MdKeyboardArrowUp />}
+              Ordenar por{' '}
+              <b>
+                Nome da Faculdade{' '}
+                {orderAsc ? <MdKeyboardArrowDown /> : <MdKeyboardArrowUp />}
+              </b>
             </ButtonOrder>
           </TableHead>
 
@@ -283,19 +286,19 @@ export default function Modal({
                       </td>
                       <td>
                         <div>
-                          <strong>{item.course_name}</strong>
-                          <span>{item.course_level}</span>
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          <span>
-                            {' '}
-                            Bolsa de <b>{item.discount_percentage}%</b>
-                          </span>
-                          <strong>
-                            {item.price_with_discount_formated}/mês
-                          </strong>
+                          <div>
+                            <strong>{item.course_name}</strong>
+                            <span>{item.course_level}</span>
+                          </div>
+
+                          <div>
+                            <span>
+                              Bolsa de <b>{item.discount_percentage}%</b>
+                            </span>
+                            <strong>
+                              {item.price_with_discount_formated}/mês
+                            </strong>
+                          </div>
                         </div>
                       </td>
                     </tr>

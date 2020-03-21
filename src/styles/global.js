@@ -46,5 +46,6 @@ export default createGlobalStyle`
 
 export const ContainerGlobal = styled.div`
   width: 1140px;
+  max-width: calc(100% - 30px);
   margin: 0 auto;
 `;
