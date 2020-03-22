@@ -1,6 +1,6 @@
 [[redirects]]
-  from = "/search"
-  to = "https://front-end-test-quero-api.herokuapp.com"
+  from = "/scholarship"
+  to = "https://front-end-test-quero-api.herokuapp.com/scholarship"
   status = 200
   force = true
   headers = {X-From = "Netlify"}
