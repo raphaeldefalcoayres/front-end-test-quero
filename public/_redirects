@@ -1,3 +1,4 @@
 
+/scholarship https://front-end-test-quero-api.herokuapp.com/scholarship 301!
 /scholarship/* https://front-end-test-quero-api.herokuapp.com/scholarship/:splat 301!
 /* /index.html 200
