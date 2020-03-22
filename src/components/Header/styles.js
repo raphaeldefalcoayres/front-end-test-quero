@@ -206,6 +206,11 @@ export const ProfileUser = styled.div`
     display: none;
   }
 
+  div {
+    display: flex;
+    align-items: center;
+  }
+
   @media screen and (max-width: 996px) {
     justify-content: flex-end;
     div {
