@@ -1,11 +1,11 @@
-[[redirects]]
-from = "/scholarship/*"
-to = "https://front-end-test-quero-api.herokuapp.com/scholarship/:splat"
-status = 200
-force = true
+# [[redirects]]
+# from = "/scholarship/*"
+# to = "https://front-end-test-quero-api.herokuapp.com/scholarship/:splat"
+# status = 200
+# force = true
 
-[[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200
-force = true
+# [[redirects]]
+# from = "/*"
+# to = "/index.html"
+# status = 200
+# force = true
