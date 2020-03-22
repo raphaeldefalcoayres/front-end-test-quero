@@ -39,7 +39,7 @@ A sua missão é fazer uma página onde o aluno possa filtrar bolsas de estudo d
 ### Especificações de funcionalidades:
 
 - O projeto possui uma única página, com a lista de favoritos e um modal para a busca de cursos;
-- A clicar em Adicionar curso, deve abrir o modal de busca;
+- Ao clicar em Adicionar curso, deve abrir o modal de busca;
 - A busca deve conter os seguintes filtros:
   - Cidade;
   - Curso;
@@ -136,6 +136,7 @@ Execute `yarn start` or `npm run start` para executar o projeto
 ### Contruído com
 
 - [React](https://pt-br.reactjs.org/?fbclid=IwAR0qox-iLijSa20vGDex2DoJ9IgwyE4YG7BzA8L3s7grsqSXyXGmyNVnJ2I) - Uma biblioteca JavaScript para criar interfaces de usuário.
+- [React Icons](https://github.com/react-icons/react-icons) - Icones SVG para react de pacotes populares.
 - [Styled Components](https://www.styled-components.com/) - É uma biblioteca para React e React Native que permite que você use estilos ao nível de componente na sua aplicação.
 - [Eslint](https://eslint.org/) - Encontra e corrija problemas no seu código JavaScript.
 - [Prettier](https://prettier.io/) - Prettier é um formatador de código opinativo.
