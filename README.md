@@ -2,9 +2,9 @@
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/raphaeldefalcoayres/lectures-backend/blob/master/LICENSE)
 
-> URL back-end API hospedada no Heroku usando json-server: https://front-end-test-quero-api.herokuapp.com/scholarship
+> URL API hospedada no Heroku usando json-server: https://front-end-test-quero-api.herokuapp.com/scholarship
 
-> URL front-end hospedada no Netilify: https://5e77607c2e5e9e000887927f--adoring-franklin-e7fb5d.netlify.com/
+> URL front-end hospedada no Netilify: https://adoring-franklin-e7fb5d.netlify.com/
 
 ![Image of coverage](https://github.com/raphaeldefalcoayres/front-end-test-quero/blob/master/.github/demo.jpg)
 
