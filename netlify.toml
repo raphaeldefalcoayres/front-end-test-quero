@@ -5,7 +5,7 @@ status = 301
 force = true
 
 [[redirects]]
-from = "/"
-to = "/html/index.html"
+from = "/*"
+to = "/index.html"
 status = 200
 force = true
