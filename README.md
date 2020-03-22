@@ -9,8 +9,8 @@
 ![Image of coverage](https://github.com/raphaeldefalcoayres/front-end-test-quero/blob/master/.github/demo.jpg)
 
 <p>
-  <a href="#requisitos-do-projeto">Requisítos do projeto</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="#especificações-de-funcionalidades">Especificações de funcionalidades</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#requisitos-do-projeto">Requisítos</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#especificações-de-funcionalidades">Especificações</a>&nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="#dados">Dados</a>&nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="#critérios-de-avaliação">Critérios</a>&nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="#sugestões-extras-não-obrigatórias">Extras</a>&nbsp;&nbsp;|&nbsp;&nbsp;
