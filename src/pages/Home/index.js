@@ -26,7 +26,7 @@ export default function Home() {
 
   const [semesters, setSemesters] = useState([]);
 
-  const [filters, setFilters] = useState([]);
+  const [filters, setFilters] = useState({});
 
   async function loadScholarship() {
     if (!localStorage.getItem('scholarship')) {

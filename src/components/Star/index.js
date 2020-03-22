@@ -4,11 +4,14 @@ import { FaStar, FaRegStar, FaStarHalfAlt } from 'react-icons/fa';
 
 export default function Star({ scoreRoundedToHalf, step }) {
   function TheStar({ scoreRoundedToHalf }) {
-    if (Math.floor(scoreRoundedToHalf) >= step) {
+    const ROUNDING_DOWN = Math.floor(scoreRoundedToHalf);
+    const ROUNDING = Math.round(scoreRoundedToHalf);
+
+    if (ROUNDING_DOWN >= step) {
       return <FaStar />;
     }
 
-    if (Math.round(scoreRoundedToHalf) === step) {
+    if (ROUNDING === step) {
       return <FaStarHalfAlt />;
     }
 

@@ -82,17 +82,45 @@ export default function Modal({
   }
 
   function filterByKind(e) {
-    const course_kind = e.target.value;
+    const course_kind_select = e.target.value;
 
-    setFilters(omit(filters, ['course_kind']));
+    const options = document.querySelectorAll('[name=kind]');
+    const options_checked = document.querySelectorAll('[name=kind]:checked');
 
-    if (e.target.checked) {
+    const filtered = {}.hasOwnProperty.call(filters, e.target.id);
+
+    if (filtered) {
+      setFilters(omit(filters, [e.target.id]));
+    } else if (!e.target.checked) {
       setFilters({
         ...filters,
-        course_kind: o => {
-          return o.course_kind === course_kind;
+        [e.target.id]: o => {
+          return o.course_kind !== course_kind_select;
         },
       });
+    } else {
+      setFilters({
+        ...filters,
+        [e.target.id]: o => {
+          return o.course_kind === course_kind_select;
+        },
+      });
+    }
+
+    const TOTAL_CHECKBOXES_CHECKED = options_checked.length;
+    const TOTAL_CHECKBOXES_EQUAL_CHECKBOXES_CHECKED =
+      options.length === TOTAL_CHECKBOXES_CHECKED;
+
+    if (
+      TOTAL_CHECKBOXES_EQUAL_CHECKBOXES_CHECKED ||
+      TOTAL_CHECKBOXES_CHECKED === 0
+    ) {
+      const filteredRemove = [];
+      options.forEach(item => {
+        filteredRemove.push(item.id);
+      });
+
+      setFilters(omit(filters, filteredRemove));
     }
   }
 
@@ -215,14 +243,16 @@ export default function Modal({
           </RowForm>
           <RowForm>
             <InputGroup>
-              <label htmlFor="kind-1">COMO VOCÊ QUER ESTUDAR?</label>
+              <label htmlFor="course_kind_presencial">
+                COMO VOCÊ QUER ESTUDAR?
+              </label>
               <RowCheckbox>
                 <Checkbox>
-                  <label htmlFor="kind-1">
+                  <label htmlFor="course_kind_presencial">
                     <input
                       type="checkbox"
                       name="kind"
-                      id="kind-1"
+                      id="course_kind_presencial"
                       value="Presencial"
                       onChange={e => filterByKind(e)}
                     />{' '}
@@ -230,11 +260,11 @@ export default function Modal({
                   </label>
                 </Checkbox>
                 <Checkbox>
-                  <label htmlFor="kind-2">
+                  <label htmlFor="course_kind_ead">
                     <input
                       type="checkbox"
                       name="kind"
-                      id="kind-2"
+                      id="course_kind_ead"
                       value="EaD"
                       onChange={e => filterByKind(e)}
                     />{' '}
@@ -333,7 +363,7 @@ Modal.propTypes = {
   }),
   action: PropTypes.func.isRequired,
   modalId: PropTypes.string.isRequired,
-  filters: PropTypes.arrayOf(PropTypes.object).isRequired,
+  filters: PropTypes.objectOf(PropTypes.func),
   setFilters: PropTypes.func,
 };
 
@@ -341,4 +371,5 @@ Modal.defaultProps = {
   data: {},
   setSelectCourses: null,
   setFilters: null,
+  filters: {},
 };
