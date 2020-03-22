@@ -9,15 +9,14 @@
 ![Image of coverage](https://github.com/raphaeldefalcoayres/front-end-test-quero/blob/master/.github/demo.jpg)
 
 <p>
-  <a href="#introducao">Introdução</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="#requisitos">Requisítos</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="#especificacoes">Especificações de funcionalidades</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#requisitos-do-projeto">Requisítos do projeto</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#especificações-de-funcionalidades">Especificações de funcionalidades</a>&nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="#dados">Dados</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="#criterios">Critérios</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="#extras">Extras</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="#instalacao">Instalação</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="#construido-com">Construído com</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="#licenca">Licença</a>
+  <a href="#critérios-de-avaliação">Critérios</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#sugestões-extras-não-obrigatórias">Extras</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#instalação">Instalação</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#contruído-com">Construído com</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#licença">Licença</a>
 </p>
 
 ## Sobre o teste
@@ -143,3 +142,7 @@ Execute `yarn start` or `npm run start` para executar o projeto
 - [EditorConfig](https://editorconfig.org/) - EditorConfig ajuda a manter estilos de codificação consistentes para múltiplos desenvolvedores.
 - [Date-fns](https://date-fns.org/) - Biblioteca de utilitários de data para JavaScript moderno.
 - [Lodash](https://lodash.com/) - Uma moderna biblioteca de utilitários JavaScript que oferece modularidade, desempenho e extras.
+
+## Licença
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
