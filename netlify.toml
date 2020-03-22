@@ -4,4 +4,8 @@ to = "https://front-end-test-quero-api.herokuapp.com/scholarship"
 status = 301
 force = true
 
-[[redirects]] from = "/*" to = "/index.html" status = 200
+[[redirects]]
+from = "/"
+to = "/html/index.html"
+status = 200
+force = true
