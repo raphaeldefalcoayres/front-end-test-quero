@@ -332,9 +332,13 @@ Modal.propTypes = {
     courses: PropTypes.array,
   }),
   action: PropTypes.func.isRequired,
+  modalId: PropTypes.string.isRequired,
+  filters: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setFilters: PropTypes.func,
 };
 
 Modal.defaultProps = {
   data: {},
   setSelectCourses: null,
+  setFilters: null,
 };
