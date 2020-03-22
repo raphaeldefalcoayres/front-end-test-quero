@@ -3,4 +3,4 @@
   to = "https://front-end-test-quero-api.herokuapp.com/scholarship"
   status = 200
   force = true
-  headers = {X-From = "Netlify"}
+  headers = {Access-Control-Allow-Origin = "*"}
