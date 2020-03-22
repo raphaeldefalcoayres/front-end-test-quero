@@ -1,0 +1,5 @@
+[[redirects]]
+from = "/scholarship"
+to = "https://front-end-test-quero-api.herokuapp.com/scholarship"
+status = 301
+force = true
